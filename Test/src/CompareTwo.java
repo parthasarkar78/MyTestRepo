@@ -3,6 +3,7 @@ package src;
 import java.io.*;
 
 //initial comment
+//Few more comments
 public class CompareTwo {
 	static String arrayLines1[] = new String[10];
 	static String arrayLines2[] = new String[10];
