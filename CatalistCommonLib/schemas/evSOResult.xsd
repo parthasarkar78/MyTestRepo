@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="com/icare/eai/schema/om/evSOResult" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:Q1="com/icare/eai/schema/om/evSOResult">
+  <xs:element name="evSOResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="SOID" maxOccurs="1" minOccurs="0"/>
+        <xs:element type="xs:string" name="SO_Result_Code" maxOccurs="1" minOccurs="0"/>
+        <xs:element type="xs:string" name="SOErrDesc" maxOccurs="1" minOccurs="0"/>
+        <xs:element name="ServiceElementResult" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="ServiceElement" maxOccurs="1" minOccurs="0"/>
+              <xs:element type="xs:string" name="SEID" maxOccurs="1" minOccurs="0"/>
+              <xs:element type="xs:string" name="SEProvDate" maxOccurs="1" minOccurs="0"/>
+              <xs:element type="xs:string" name="SEResultCode" maxOccurs="1" minOccurs="0"/>
+              <xs:element type="xs:string" name="SEErrDesc" maxOccurs="1" minOccurs="0"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

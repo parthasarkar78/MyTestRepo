@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://oos.catalist.indosat.com/Master" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://oos.catalist.indosat.com/Master">
+
+
+
+	<element name="OOSOrchConfiguration">
+		<complexType>
+			<sequence>
+				<element name="Source" type="string"></element>
+				<element name="OrderType" type="string"></element>
+				<element name="Services" maxOccurs="unbounded"
+					minOccurs="1">
+
+					<complexType>
+						<sequence>
+							<element name="service"
+								type="string">
+							</element>
+							<element name="execution" type="int"></element>
+							<element name="hasOutput" type="boolean"></element>
+							<element name="dependSeqID"
+								type="int" maxOccurs="unbounded" minOccurs="0">
+							</element>
+							<element name="seqID" type="int"></element>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+
+
+	<complexType name="OOSOrderConstructionType">
+		<sequence>
+			<element name="source" type="string"></element>
+			<element name="orderType" type="string"></element>
+			<element name="serviceID" type="string"></element>
+			<element name="exec" type="int"></element>
+			<element name="hasOutput" type="boolean"></element>
+
+			<element name="className" type="string"></element>
+			<element name="dependSeqID" type="int" maxOccurs="unbounded"
+				minOccurs="0">
+			</element>
+			<element name="seqID" type="int"></element>
+			<element name="fieldMapping" type="string"
+				maxOccurs="unbounded" minOccurs="0">
+			</element>
+			<element name="staticField" type="string"
+				maxOccurs="unbounded" minOccurs="0">
+			</element>
+			<element name="ignoreError" type="boolean"></element>
+			<element name="fetchOutput" type="string" maxOccurs="unbounded" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="OrderSource">
+		<sequence>
+			<element name="SourceName" type="string"></element>
+			<element name="ClassName" type="string"></element>
+		</sequence>
+	</complexType>
+</schema>

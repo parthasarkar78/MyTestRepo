@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="com/icare/eai/schema/om/evSORequest" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:Q1="com/icare/eai/schema/om/evSORequest">
+  <xs:element name="evSORequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="SOID" maxOccurs="1" minOccurs="0"/>
+        <xs:element name="Key" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="Name" maxOccurs="1" minOccurs="0"/>
+              <xs:element type="xs:string" name="Value" maxOccurs="1" minOccurs="0"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ListOfServiceElements" maxOccurs="1" minOccurs="0" type="Q1:ListOfServiceElementsComplexType">
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ListOfServiceElementsComplexType">
+  	<xs:sequence>
+  		<xs:element minOccurs="0" maxOccurs="unbounded"
+  			name="ServiceElement">
+  			<xs:complexType>
+  				<xs:sequence>
+  					<xs:element name="ServiceElementName"
+  						type="xs:string" maxOccurs="1" minOccurs="0">
+  					</xs:element>
+  					<xs:element name="ListOfAttribute" maxOccurs="1" minOccurs="0">
+  						<xs:complexType>
+  							<xs:sequence>
+  								<xs:element minOccurs="0"
+  									maxOccurs="unbounded" name="Attribute">
+  									<xs:complexType>
+  										<xs:sequence>
+  											<xs:element name="Name"
+  												type="xs:string" maxOccurs="1" minOccurs="0">
+  											</xs:element>
+  											<xs:element name="Value"
+  												type="xs:string" maxOccurs="1" minOccurs="0">
+  											</xs:element>
+  										</xs:sequence>
+  									</xs:complexType>
+  								</xs:element>
+  							</xs:sequence>
+  						</xs:complexType>
+  					</xs:element>
+  				</xs:sequence>
+  			</xs:complexType>
+  		</xs:element>
+  	</xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="ListOfServiceElements">
+  	<xs:complexType>
+  		<xs:sequence>
+  			<xs:element name="ListOfElements"
+  				type="Q1:ListOfServiceElementsComplexType" maxOccurs="1" minOccurs="0">
+  			</xs:element>
+  		</xs:sequence>
+  	</xs:complexType>
+  </xs:element>
+</xs:schema>
+
