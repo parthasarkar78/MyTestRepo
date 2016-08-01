@@ -12,6 +12,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+//some comments by Dimitry
+
 public class CRSForeignOperator {
 	private String operatorId;
 	private String operatorName;
