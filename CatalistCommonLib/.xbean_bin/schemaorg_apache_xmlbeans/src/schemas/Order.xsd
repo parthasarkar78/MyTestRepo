@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://oms.catalist.isat.com/order"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://oms.catalist.isat.com/order"
+	xmlns:pref="http://catalist.eai.indosat.com/StandardInputOutput" xmlns:pref1="http://oos.catalist.indosat.com/Master">
+
+
+	<import
+		namespace="http://catalist.eai.indosat.com/StandardInputOutput"
+		schemaLocation="StandardInputOutput.xsd">
+	</import>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<complexType name="OOSOrderHeaderType">
+		<sequence>
+			<element name="ID" type="int"></element>
+			<element name="orderType" type="string"></element>
+			<element name="channel" type="string"></element>
+			<element name="source" type="string"></element>
+			<element name="userCreate" type="string"></element>
+			<element name="key1" type="string"></element>
+			<element name="key2" type="string"></element>
+			<element name="key3" type="string"></element>
+			<element name="refID" type="string"></element>
+			<element name="execDate" type="dateTime"></element>
+			<element name="startExecDate" type="dateTime"></element>
+			<element name="endExecDate" type="dateTime"></element>
+			<element name="responded" type="boolean"></element>
+			<element name="status" type="int"></element>
+
+			<element name="statusErrorCode" type="string"></element>
+			<element name="statusErrorDescription" type="string"></element>
+
+			<element name="dpdOrderID" type="int"></element>
+			<element name="resubmitAttempt" type="int"></element>
+			<element name="additionalField1" type="string"></element>
+			<element name="additionalField2" type="string"></element>
+			<element name="additionalField3" type="string"></element>
+			<element name="orderDate" type="dateTime"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="OOSOrderLineItemType">
+		<sequence>
+			<element name="orderID" type="int"></element>
+			<element name="lineID" type="int"></element>
+			<element name="refID" type="string"></element>
+			<element name="serviceID" type="string"></element>
+			<element name="startExecDate" type="date"></element>
+			<element name="endExecDate" type="date"></element>
+			<element name="status" type="int"></element>
+			<element name="notes" type="string"></element>
+			<element name="parameters"
+				type="tns:OOSOrderLineItemParamType" maxOccurs="unbounded"
+				minOccurs="1">
+			</element>
+			<element name="hasOutput" type="boolean"></element>
+			<element name="rParameters"
+				type="tns:OOSOrderLineItemParamType" maxOccurs="unbounded"
+				minOccurs="0">
+			</element>
+
+
+			<element name="autoGenerate" type="boolean"></element>
+
+
+			<element name="retryAttempt" type="int"></element>
+			<element name="dependLineID" type="int"
+				maxOccurs="unbounded" minOccurs="0">
+			</element>
+			<element name="mappingFields" type="string" maxOccurs="unbounded" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="OOSOrderLineItemParamType">
+		<sequence>
+			<element name="lineID" type="int"></element>
+			<element name="name" type="string"></element>
+			<element name="value" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<element name="OrderInfo">
+		<complexType>
+			<sequence>
+				<element name="header" type="tns:OOSOrderHeaderType"></element>
+
+
+				<element name="items" type="tns:OOSOrderLineItemType"
+					maxOccurs="unbounded" minOccurs="1">
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+
+
+	<element name="OLIResponse">
+		<complexType>
+			<sequence>
+
+                <element name="OrderID" type="string" maxOccurs="1" minOccurs="0"></element>
+                <element name="LineID" type="string" maxOccurs="1"
+					minOccurs="0">
+				</element>
+				<element name="Status" type="pref:StatusType"></element>
+				<element name="ExtTransactionID" type="string"
+					maxOccurs="1" minOccurs="0">
+				</element>
+				<element name="Parameter" maxOccurs="unbounded"
+					minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="Name" type="string"></element>
+							<element name="Value" type="string"></element>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

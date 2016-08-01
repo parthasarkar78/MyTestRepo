@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://catalist.eai.indosat.com/StandardInputOutput" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://catalist.eai.indosat.com/StandardInputOutput">
+    <complexType name="RequestType">
+    	<sequence>
+    		<element name="RequestID" type="string"></element>
+    		<element name="RequestSource" type="string"></element>
+    		<element name="RequestDate" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="StatusType">
+    	<sequence>
+
+            <element name="Status">
+            	<simpleType>
+            		<restriction base="string">
+            			<enumeration value="SUCCESS"></enumeration>
+            			<enumeration value="ERROR"></enumeration>
+            		</restriction>
+            	</simpleType>
+            </element>
+            <element name="ErrorCode" type="string"></element>
+    		<element name="ErrorDescription" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="DummyInput">
+    	<complexType>
+    		<sequence>
+    			<element name="Request" type="tns:RequestType"></element>
+    			<element name="Input" type="tns:DummyInputType"></element>
+    		</sequence>
+    	</complexType>
+    </element>
+
+    <complexType name="DummyInputType">
+    	<sequence>
+    		<element name="MSISDN" type="string"></element>
+    		<element name="ICCID" type="string"></element>
+    		<element name="IMSI" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="DummyOutput">
+    	<complexType>
+    		<sequence>
+    			<element name="Status" type="tns:StatusType"></element>
+    			<element name="Output" type="tns:DummyOutputType"></element>
+    		</sequence>
+    	</complexType>
+    </element>
+
+    <complexType name="DummyOutputType">
+    	<sequence>
+    		<element name="SEQID" type="string"></element>
+    	</sequence>
+    </complexType>
+</schema>
