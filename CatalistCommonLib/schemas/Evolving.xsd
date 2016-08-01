@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://schema.evolving.com/Tertio/FeatureSet/AgentEPTInterface/1.3" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schema.evolving.com/Tertio/FeatureSet/AgentEPTInterface/1.3">
+	
+	<complexType name="AddFeaturesComplexType">
+		<sequence>
+			<element name="Feature" maxOccurs="unbounded" minOccurs="0">
+				<complexType>
+					<attribute name="FeatureName" type="string"></attribute>
+					<attribute name="FeatureValue" type="string"></attribute>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	
+	<complexType name="KeyValuesComplexType">
+		<sequence>
+			<element name="Key" maxOccurs="unbounded" minOccurs="0">
+				<complexType>
+					<attribute name="KeyName" type="string"></attribute>
+					<attribute name="KeyValue" type="string"></attribute>
+				</complexType>
+			</element>
+		</sequence>
+
+
+	</complexType>
+	
+	<complexType name="PersonalisationsComplexType">
+		<sequence>
+			<element name="Personalisation" maxOccurs="unbounded" minOccurs="0">
+				<complexType>
+					<attribute name="FeatureName" type="string"></attribute>
+					<attribute name="PersonalisationName"
+						type="string">
+					</attribute>
+					<attribute name="PersonalisationAction"
+						type="string">
+					</attribute>
+					<attribute name="KeyValue" type="string"></attribute>
+					<attribute name="Parameters" type="string"></attribute>
+				</complexType>
+			</element>
+		</sequence>
+
+
+	</complexType>
+
+	<complexType name="EptResponseMinsatType">
+  		<sequence>
+  			<element name="EptResponse">
+  				<complexType>
+  					<sequence>
+<element name="AuxiliaryData">
+  				<complexType>
+  					<sequence>
+
+  						<element name="FeatureSet">
+  							<complexType>
+  								<sequence>
+  									<element name="KeyValues"
+  										maxOccurs="1" minOccurs="1">
+  										<complexType>
+  											<sequence>
+  												<element name="Key"
+  													maxOccurs="unbounded" minOccurs="1">
+  													<complexType>
+
+  														<attribute
+  															name="KeyName" type="string">
+  														</attribute>
+  														<attribute
+  															name="KeyValue" type="string">
+  														</attribute>
+  													</complexType>
+  												</element>
+  											</sequence>
+  										</complexType>
+  									</element>
+  									<element name="ParsedResponse"
+  										maxOccurs="1" minOccurs="0">
+  										<complexType>
+  											<sequence>
+  												<element
+  													name="Attribute" maxOccurs="unbounded" minOccurs="0">
+  													<complexType>
+
+  														<attribute
+  															name="Name" type="string">
+  														</attribute>
+  														<attribute
+  															name="Value" type="string">
+  														</attribute>
+  													</complexType>
+  												</element>
+  											</sequence>
+  										</complexType>
+  									</element>
+
+  								</sequence>
+  							</complexType>
+  						</element>
+  					</sequence>
+  				</complexType>
+  			</element>
+  					</sequence>
+  				</complexType>
+  			</element>
+  		</sequence>
+	</complexType>
+
+	<complexType name="EptResponseHLRType">
+		<sequence>
+			<element name="EptResponse">
+				<complexType>
+			<sequence>
+				<element name="QueryFeatureSet" maxOccurs="1" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="KeyValues" type="tns:KeyValuesComplexType" maxOccurs="1" minOccurs="0">
+
+							</element>
+							<element name="AddFeatures" type="tns:AddFeaturesComplexType" maxOccurs="1" minOccurs="0">
+
+							</element>
+							<element name="Personalisations"
+								type="tns:PersonalisationsComplexType" maxOccurs="1" minOccurs="0">
+
+							</element>
+							<element name="NestedFeatureActions" maxOccurs="1" minOccurs="0">
+								<complexType>
+									<sequence>
+										<element name="NestedFeature" maxOccurs="unbounded" minOccurs="0">
+											<complexType>
+												<sequence>
+													<element
+														name="Personalisations"
+														type="tns:PersonalisationsComplexType" maxOccurs="1" minOccurs="0">
+													</element>
+													<element
+														name="KeyValues" type="tns:KeyValuesComplexType" maxOccurs="1" minOccurs="0">
+													</element>
+													<element
+														name="AddFeatures" type="tns:AddFeaturesComplexType" maxOccurs="1" minOccurs="0">
+
+													</element>
+												</sequence>
+												<attribute
+													name="FeatureSetName" type="string">
+												</attribute>
+												<attribute name="Action"
+													type="string">
+												</attribute>
+											</complexType>
+										</element>
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+						<attribute name="FeatureSetName"
+							type="string">
+						</attribute>
+
+
+						<attribute name="Action" type="string"></attribute>
+
+                        <attribute name="Mode" type="string"></attribute>
+                        <attribute name="NeType" type="string"></attribute>
+                    </complexType>
+				</element>
+			</sequence>
+
+
+
+
+		</complexType>
+
+			</element>
+		</sequence>
+	</complexType>
+
+</schema>
